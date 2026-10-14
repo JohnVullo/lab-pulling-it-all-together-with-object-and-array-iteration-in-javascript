@@ -114,3 +114,124 @@ function gameObject() {
         },
     };
 }
+
+//Grabs all data from function, and stores it as gameData
+const gameData = gameObject()
+
+
+ //Takes player name returns points scored
+function numPointsScored(playerName){
+    const homeArray = Object.entries(gameData.home.players).find(key => key[0] === playerName)
+    if(homeArray === undefined){
+            const awayArray = Object.entries(gameData.away.players).find(key => key[0] === playerName)
+            const playerPoints = awayArray[1].points
+            console.log("Name: ", playerName)
+            console.log("Points: ", playerPoints)
+            return playerPoints
+    } else {
+        const playerPoints = homeArray[1].points
+        console.log("Name: ", playerName)
+        console.log("Points: ", playerPoints)
+        return playerPoints
+    }
+}
+
+numPointsScored("Alan Anderson")
+
+//takes player name and returns shoe size
+function shoeSize(playerName){
+    const homeArray = Object.entries(gameData.home.players).find(key => key[0] === playerName)
+    if(homeArray === undefined){
+            const awayArray = Object.entries(gameData.away.players).find(key => key[0] === playerName)
+            const playerShoe = awayArray[1].shoe
+            console.log("Name: ", playerName)
+            console.log("Shoe size: ", playerShoe)
+            return playerShoe
+    } else {
+        const playerShoe = homeArray[1].shoe
+        console.log("Name: ", playerName)
+        console.log("Shoe size: ", playerShoe)
+        return playerShoe
+    }
+}
+
+shoeSize("Ben Gordon")
+
+//takes team name and returns array of team colors
+function teamColors(teamName) {
+    if(gameData.home.teamName === teamName) {
+        console.log("The ", teamName, "colors are: ", gameData.home.colors)
+        return gameData.home.colors
+    } else {
+        console.log("The ", teamName, "colors are: ", gameData.away.colors)
+        return gameData.away.colors
+    }
+}
+
+teamColors("Charlotte Hornets")
+
+
+//returns array of both teams
+function teamNames() {
+    const teamArray = []
+    teamArray.push(gameData.home.teamName)
+    teamArray.push(gameData.away.teamName)
+    console.log(teamArray)
+}
+
+teamNames()
+
+//returns array of players' jersey numbers
+function playerNumbers(teamName){
+    let playerNumber = []
+    if(gameData.home.teamName === teamName){
+        const playerArray = Object.values(gameData.home.players)
+        for(let num in playerArray){
+            playerNumber.push(playerArray[num].number)
+            console.log(`Jersey number: ${playerNumber[num]}`)
+        }
+        return playerNumber
+    } else {
+        const playerArray = Object.values(gameData.away.players)
+        for(let num in playerArray){
+            playerNumber.push(playerArray[num].number)
+            console.log(`Jersey number: ${playerNumber[num]}`)
+        }
+        return playerNumber
+    }
+}
+
+console.log(playerNumbers("Charlotte Hornets"))
+
+
+//returns object of all stats of player
+function playerStats(playerName){
+    const homeArray = Object.entries(gameData.home.players).find(key => key[0] === playerName)
+    if(homeArray === undefined){
+            const awayArray = Object.entries(gameData.away.players).find(key => key[0] === playerName)
+            console.log(awayArray[1])
+            return awayArray[1]
+    } else {
+        console.log(homeArray[1])
+        return homeArray[1]
+    }
+}
+
+playerStats("Alan Anderson")
+
+
+
+//returns number of rebounds of player with largest shoe
+//function bigShoeRebounds() 
+
+//determines what players scored the most points
+//function mostPointsScored() 
+
+//what team has the most total points
+//function winningTeam() 
+
+//finds player with longest name
+//function playerWithLongestName() 
+
+//returns true if player with longest name has most steals
+//function doesLongNameStealATon() 
