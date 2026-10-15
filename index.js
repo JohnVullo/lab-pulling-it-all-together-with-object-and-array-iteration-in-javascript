@@ -177,6 +177,7 @@ function teamNames() {
     teamArray.push(gameData.home.teamName)
     teamArray.push(gameData.away.teamName)
     console.log(teamArray)
+    return teamArray
 }
 
 teamNames()
